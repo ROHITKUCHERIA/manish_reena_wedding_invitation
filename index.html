@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Manish &amp; Reena · Wedding Invitation</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            color-scheme: light;
+            --wine: #6e1f2f;
+            --gold: #c09a4f;
+            --gold2: #e6c88a;
+            --ivory: #fcf7ef;
+            --blush: #f6dcd9;
+            --ink: #4a3a3a
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            -webkit-tap-highlight-color: transparent
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            font-family: Montserrat, sans-serif;
+            color: var(--ink);
+            background: linear-gradient(#f9e6e2, var(--ivory) 30%, #f9e9e4 70%, #f3d6d3);
+            max-width: 480px;
+            margin: 0 auto;
+            overflow-x: hidden;
+            background-attachment: fixed
+        }
+
+        body.lock {
+            height: 100vh;
+            overflow: hidden
+        }
+
+        h1,
+        h2,
+        h3,
+        .pf {
+            font-family: 'Playfair Display', serif;
+            color: var(--wine);
+            font-weight: 700
+        }
+
+        .fx {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 5;
+            max-width: 480px;
+            margin: auto;
+            overflow: hidden
+        }
+
+        .rose {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 50% 50%, #8a2a3d 0 10%, #c4566b 11% 24%, #e58a9c 25% 40%, #f3b3be 41% 58%, #fbd9de 59% 72%, transparent 73%);
+            filter: drop-shadow(0 6px 8px #6e1f2f55);
+            animation: sway 6s ease-in-out infinite alternate
+        }
+
+        .rose::after {
+            content: "";
+            position: absolute;
+            inset: 18%;
+            border-radius: 50%;
+            border: 2px solid #ffffff55;
+            box-shadow: 0 0 0 10px #ffffff22, inset 0 0 14px #6e1f2f55
+        }
+
+        .r1 {
+            left: -60px;
+            bottom: -40px
+        }
+
+        .r2 {
+            right: -70px;
+            bottom: 90px;
+            width: 120px;
+            height: 120px;
+            animation-delay: -2s
+        }
+
+        .r3 {
+            left: -50px;
+            top: 38%;
+            width: 100px;
+            height: 100px;
+            animation-delay: -4s
+        }
+
+        .r4 {
+            right: -55px;
+            top: 12%;
+            width: 110px;
+            height: 110px;
+            animation-delay: -1s
+        }
+
+        @keyframes sway {
+            to {
+                rotate: 14deg
+            }
+        }
+
+        .mari {
+            position: absolute;
+            top: 0;
+            width: 14px;
+            height: 90px;
+            background: radial-gradient(circle, #f59e0b 40%, #fbbf24 41% 60%, transparent 62%) 0 0/14px 14px repeat-y;
+            transform-origin: top;
+            animation: swing 3.5s ease-in-out infinite alternate;
+            filter: drop-shadow(0 2px 2px #0003)
+        }
+
+        @keyframes swing {
+            from {
+                rotate: -6deg
+            }
+
+            to {
+                rotate: 6deg
+            }
+        }
+
+        #loader {
+            position: fixed;
+            inset: 0;
+            background: var(--ivory);
+            z-index: 100;
+            display: grid;
+            place-items: center;
+            transition: opacity .6s
+        }
+
+        .spin {
+            width: 34px;
+            height: 34px;
+            border: 3px solid var(--blush);
+            border-top-color: var(--wine);
+            border-radius: 50%;
+            animation: rot 1s linear infinite
+        }
+
+        @keyframes rot {
+            to {
+                rotate: 360deg
+            }
+        }
+
+        #intro {
+            position: fixed;
+            inset: 0;
+            z-index: 50;
+            display: grid;
+            place-items: center;
+            background: radial-gradient(circle at 30% 20%, #fff3f1, var(--blush) 60%, #efc6c6);
+            perspective: 1100px;
+            transition: opacity 1s
+        }
+
+        .stage {
+            transition: transform 1.4s ease-in, opacity 1.2s;
+            text-align: center
+        }
+
+        .book {
+            position: relative;
+            width: 220px;
+            height: 310px;
+            margin: auto;
+            transform-style: preserve-3d;
+            transform: rotateY(-14deg) rotateX(4deg);
+            animation: float 4s ease-in-out infinite alternate;
+            cursor: pointer
+        }
+
+        @keyframes float {
+            to {
+                translate: 0 -10px
+            }
+        }
+
+        .page,
+        .cover {
+            position: absolute;
+            inset: 0;
+            border-radius: 3px 10px 10px 3px
+        }
+
+        .page {
+            background: var(--ivory);
+            box-shadow: 0 20px 40px #6e1f2f55
+        }
+
+        .cover {
+            background: linear-gradient(135deg, #7d2436, #561624);
+            border: 2px solid var(--gold);
+            outline: 1px solid var(--gold);
+            outline-offset: -10px;
+            transform-origin: left;
+            transition: transform 1.3s cubic-bezier(.6, 0, .3, 1);
+            display: grid;
+            place-content: center;
+            gap: 10px;
+            text-align: center;
+            color: var(--gold2);
+            backface-visibility: hidden
+        }
+
+        .open .cover {
+            transform: rotateY(-165deg)
+        }
+
+        .emb {
+            width: 88px;
+            height: 88px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            margin: auto;
+            display: grid;
+            place-items: center;
+            font-size: 44px;
+            color: var(--gold2);
+            box-shadow: inset 0 0 14px #0006
+        }
+
+        .cover i {
+            font: italic 600 13px 'Playfair Display';
+            letter-spacing: .3em
+        }
+
+        .cover small {
+            font-size: 8px;
+            letter-spacing: .3em
+        }
+
+        .hint {
+            margin-top: 34px;
+            font-size: 11px;
+            letter-spacing: .25em;
+            color: var(--wine)
+        }
+
+        .hint b {
+            display: block;
+            width: 30px;
+            height: 30px;
+            margin: 0 auto 8px;
+            border: 1.5px solid var(--wine);
+            border-radius: 50%;
+            background: radial-gradient(var(--wine) 25%, transparent 28%);
+            animation: pulse 1.6s infinite
+        }
+
+        @keyframes pulse {
+            50% {
+                scale: 1.2;
+                opacity: .5
+            }
+        }
+
+        .zoom .stage {
+            transform: scale(7);
+            opacity: 0
+        }
+
+        .zoom #intro {
+            opacity: 0
+        }
+
+        .petal {
+            position: fixed;
+            top: -20px;
+            width: 12px;
+            height: 16px;
+            border-radius: 70% 0 70% 0;
+            z-index: 60;
+            pointer-events: none;
+            animation: fall linear forwards
+        }
+
+        @keyframes fall {
+            to {
+                transform: translate(var(--dx), 110vh) rotate(720deg)
+            }
+        }
+
+        section {
+            position: relative;
+            padding: 40px 22px;
+            text-align: center
+        }
+
+        .s1 {
+            min-height: 100svh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            padding-top: 50px;
+            overflow: hidden
+        }
+
+        .arch {
+            position: absolute;
+            left: 50%;
+            top: 40px;
+            bottom: 70px;
+            width: 84%;
+            translate: -50% 0;
+            border: 1.5px solid var(--gold);
+            border-radius: 999px 999px 0 0;
+            overflow: hidden;
+            z-index: -1
+        }
+
+        .arch div {
+            position: absolute;
+            inset: -10%;
+            background: radial-gradient(circle at 50% 30%, #8c6a5d, #c9a99b 40%, #ead7cf 80%);
+            filter: blur(6px);
+            opacity: .55;
+            animation: kb 18s ease-in-out infinite alternate
+        }
+
+        @keyframes kb {
+            to {
+                scale: 1.15
+            }
+        }
+
+        .med {
+            width: 62px;
+            height: 62px;
+            border: 1.5px solid var(--gold);
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            font-size: 30px;
+            color: var(--gold);
+            background: #fff8
+        }
+
+        .sm {
+            font-size: 10px;
+            letter-spacing: .10em;
+            text-transform: uppercase;
+            color: #7a5f4f
+        }
+
+        .nm {
+            font-size: 42px;
+            line-height: 1.1;
+            min-height: 1.1em
+        }
+
+        .nm span {
+            display: inline-block;
+            opacity: 0;
+            animation: bi .6s forwards
+        }
+
+        @keyframes bi {
+            from {
+                opacity: 0;
+                filter: blur(6px)
+            }
+
+            to {
+                opacity: 1;
+                filter: none
+            }
+        }
+
+        .arrow {
+            margin-top: 14px;
+            animation: bob 1.4s infinite;
+            color: var(--wine);
+            font-size: 22px
+        }
+
+        @keyframes bob {
+            50% {
+                translate: 0 8px
+            }
+        }
+
+        .rv {
+            opacity: 0;
+            filter: blur(6px);
+            transform: translateY(14px);
+            transition: all .9s
+        }
+
+        .rv.in {
+            opacity: 1;
+            filter: none;
+            transform: none
+        }
+
+        h2 {
+            font-size: 32px;
+            margin: 6px 0 18px
+        }
+
+        .rod {
+            height: 16px;
+            border-radius: 8px;
+            background: linear-gradient(#f6e3b2, #b8893b 60%, #8d6628);
+            box-shadow: 0 4px 6px #0003;
+            position: relative;
+            margin: 0 -6px
+        }
+
+        .rod::before,
+        .rod::after {
+            content: "";
+            position: absolute;
+            top: -3px;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 35%, #f6e3b2, #9a6f2c)
+        }
+
+        .rod::before {
+            left: -8px
+        }
+
+        .rod::after {
+            right: -8px
+        }
+
+        .scr {
+            width: 78%;
+            margin: 0 auto;
+            touch-action: none
+        }
+
+        .paper {
+            height: 0;
+            overflow: hidden;
+            background: #fffaf2;
+            border: 2px solid var(--gold);
+            border-top: 0;
+            border-bottom: 0;
+            transition: height .6s
+        }
+
+        .paper.snap {
+            transition: height .6s
+        }
+
+        .paper.drag {
+            transition: none
+        }
+
+        .paper>div {
+            height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 2px
+        }
+
+        .big {
+            font: 700 70px/1 'Playfair Display';
+            color: var(--wine)
+        }
+
+        .tas {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: grab;
+            touch-action: none;
+            margin-top: -4px
+        }
+
+        .tas i {
+            width: 2px;
+            height: 34px;
+            background: var(--gold)
+        }
+
+        .tas b {
+            width: 16px;
+            height: 46px;
+            border-radius: 6px 6px 10px 10px;
+            background: linear-gradient(90deg, #8d2a3d, #5a1424)
+        }
+
+        .fing {
+            position: absolute;
+            font-size: 30px;
+            animation: pull 1.8s infinite;
+            pointer-events: none
+        }
+
+        @keyframes pull {
+            0% {
+                translate: 0 0
+            }
+
+            60%,
+            100% {
+                translate: 0 60px;
+                opacity: 0
+            }
+        }
+
+        .cd {
+            font-size: 15px;
+            margin: 22px 0 12px;
+            color: var(--wine);
+            font-weight: 600
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 11px 24px;
+            border-radius: 30px;
+            border: 1.5px solid var(--wine);
+            background: none;
+            color: var(--wine);
+            font: 600 12px Montserrat;
+            letter-spacing: .1em;
+            cursor: pointer;
+            text-decoration: none
+        }
+
+        .btn.f {
+            background: var(--wine);
+            color: #fff
+        }
+
+        .car {
+            position: relative;
+            height: 430px;
+            perspective: 900px;
+            touch-action: pan-y;
+            user-select: none
+        }
+
+        .card {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 250px;
+            height: 410px;
+            margin-left: -125px;
+            border-radius: 22px;
+            overflow: hidden;
+            background: #fffaf4;
+            box-shadow: 0 14px 30px #6e1f2f33;
+            transition: transform .5s, opacity .5s, filter .5s;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 16px;
+            text-align: center
+        }
+
+        .card .sc {
+            position: absolute;
+            inset: 0 0 40%;
+            filter: blur(2px);
+            opacity: .9
+        }
+
+        .card .ic {
+            position: absolute;
+            top: 34%;
+            left: 50%;
+            translate: -50% 0;
+            width: 62px;
+            height: 62px;
+            border-radius: 50%;
+            background: #fffd;
+            display: grid;
+            place-items: center;
+            font-size: 32px;
+            animation: bob 2.4s infinite
+        }
+
+        .card>*:not(.sc):not(.ic) {
+            position: relative
+        }
+
+        .card h3 {
+            font-size: 24px
+        }
+
+        .card p {
+            font-size: 12px;
+            line-height: 1.6
+        }
+
+        .dc {
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #fff;
+            border-radius: 12px;
+            padding: 8px 10px;
+            font-size: 11px;
+            font-weight: 600;
+            text-align: left;
+            box-shadow: 0 2px 6px #0001
+        }
+
+        .dc u {
+            width: 22px;
+            height: 22px;
+            border-radius: 7px;
+            flex: none
+        }
+
+        .dots {
+            display: flex;
+            gap: 6px;
+            justify-content: center;
+            margin-top: 6px
+        }
+
+        .dots b {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #d9b9b4
+        }
+
+        .dots b.on {
+            background: var(--wine);
+            width: 18px;
+            border-radius: 4px
+        }
+
+        .photo {
+            background-size: cover
+        }
+
+        .rec {
+            background: linear-gradient(160deg, #7d2436, #4d1120);
+            color: var(--gold2);
+            border-radius: 26px;
+            padding: 40px 22px;
+            margin: 0 6px;
+            border: 2px solid var(--gold);
+            outline: 1px solid var(--gold);
+            outline-offset: -10px;
+            position: relative;
+            overflow: hidden
+        }
+
+        .rec h2 {
+            color: var(--gold2);
+            font-size: 36px
+        }
+
+        .rec p {
+            font-size: 13px;
+            line-height: 1.9
+        }
+
+        .spk {
+            position: absolute;
+            color: var(--gold2);
+            animation: tw 2s infinite
+        }
+
+        @keyframes tw {
+            50% {
+                opacity: .2;
+                scale: .5
+            }
+        }
+
+        .bl {
+            position: absolute;
+            font-size: 50px;
+            animation: bloom 3s ease-out both
+        }
+
+        .bl.a {
+            left: -8px;
+            bottom: -8px
+        }
+
+        .bl.b {
+            right: -8px;
+            top: -8px
+        }
+
+        @keyframes bloom {
+            from {
+                scale: 0;
+                opacity: 0
+            }
+        }
+
+        .map {
+            background: #f3ebe0;
+            border-radius: 20px;
+            height: 190px;
+            position: relative;
+            overflow: hidden;
+            margin: 0 6px 14px;
+            box-shadow: 0 8px 20px #6e1f2f22;
+            cursor: pointer
+        }
+
+        .map svg {
+            width: 100%;
+            height: 100%
+        }
+
+        .route {
+            stroke-dasharray: 6 6;
+            animation: dash 1.5s linear infinite
+        }
+
+        @keyframes dash {
+            to {
+                stroke-dashoffset: -24
+            }
+        }
+
+        .pin {
+            animation: bob 1.5s infinite
+        }
+
+        .addr {
+            font-size: 10px;
+            line-height: 1.7;
+            margin: 6px 0 16px
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            translate: -50% 0;
+            background: var(--wine);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            z-index: 90;
+            opacity: 0;
+            transition: opacity .3s
+        }
+
+        .toast.on {
+            opacity: 1
+        }
+
+        #app {
+            visibility: hidden
+        }
+
+        .live #app {
+            visibility: visible
+        }
+
+        .mus {
+            position: fixed;
+            top: 12px;
+            right: 12px;
+            z-index: 70;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 1.5px solid var(--gold);
+            background: #fffd;
+            color: var(--wine);
+            cursor: pointer;
+            display: none;
+            font-size: 15px
+        }
+
+        .live .mus {
+            display: block
+        }
+    </style>
+</head>
+
+<body class="lock">
+    <div id="loader">
+        <div class="spin"></div>
+    </div>
+    <div class="fx" id="fx">
+        <div class="rose r1" data-p=".12"></div>
+        <div class="rose r2" data-p=".2"></div>
+        <div class="rose r3" data-p=".3"></div>
+        <div class="rose r4" data-p=".08"></div>
+        <div class="mari" style="left:6%"></div>
+        <div class="mari" style="left:14%;height:60px;animation-delay:-1s"></div>
+        <div class="mari" style="right:6%;animation-delay:-2s"></div>
+        <div class="mari" style="right:15%;height:70px;animation-delay:-.5s"></div>
+    </div>
+    <button class="mus" id="mus" title="Our song">♪</button>
+
+    <div id="intro">
+        <div class="stage">
+            <div class="book" id="book">
+                <div class="page"></div>
+                <div class="cover">
+                    <div class="emb">ॐ</div><i>SHUBH VIVAAH</i><small>A WEDDING INVITATION</small>
+                </div>
+            </div>
+            <div class="hint"><b></b>TAP THE BOOK TO OPEN</div>
+        </div>
+    </div>
+
+    <main id="app">
+        <section class="s1">
+            <div class="arch">
+                <div></div>
+            </div>
+            <div class="med">ॐ</div>
+            <p class="sm">Together with their families</p>
+            <h1 class="nm" id="gn"></h1>
+            <p class="sm" id="gp" style="opacity:0">Son of Mr. Baluram Kucheria &amp; Mrs. Rani Devi</p>
+            <p class="pf" style="font-size:26px;color:var(--gold)">&amp;</p>
+            <h1 class="nm" id="bn"></h1>
+            <p class="sm" id="bp" style="opacity:0">Daughter of Mr. Rajender Ghodela &amp; Mrs. Sulochana</p>
+            <p class="pf" style="font-style:italic;font-weight:500;margin-top:10px;font-size:15px;line-height:1.5">
+                request the pleasure of your<br>company at their wedding</p>
+            <div class="arrow">⌄</div>
+        </section>
+
+        <section>
+            <p class="sm rv">Save the date</p>
+            <h2 class="rv">Pull to Reveal</h2>
+            <div class="scr rv">
+                <div class="rod"></div>
+                <div class="paper" id="paper">
+                    <div>
+                        <p class="sm">Friday</p>
+                        <p class="big">04</p>
+                        <p class="pf" style="font-size:22px">December</p>
+                        <p class="sm">2026</p>
+                    </div>
+                </div>
+                <div class="rod"></div>
+                <div class="tas" id="tas"><i></i><b></b><span class="fing" id="fing" style="top:50px">👆</span></div>
+            </div>
+            <p class="sm" id="dtxt" style="margin-top:14px">Drag the tassel down</p>
+            <p class="cd" id="cd">— days · — hrs · — min · — sec</p>
+            <a class="btn f" id="cal" href="#">Add to calendar</a>
+        </section>
+
+        <section>
+            <p class="sm rv">Join us for</p>
+            <h2 class="rv">Wedding Festivities</h2>
+            <div class="car" id="car1"></div>
+            <div class="dots" id="d1"></div>
+        </section>
+
+        <section>
+            <div class="rec rv">
+                <span class="spk" style="top:14px;left:30px">✦</span><span class="spk"
+                    style="top:60px;right:40px;animation-delay:-1s">✧</span><span class="spk"
+                    style="bottom:50px;left:60px;animation-delay:-.5s">✦</span>
+                <span class="bl a">🌸</span><span class="bl b">🌹</span>
+                <p class="sm" style="color:var(--gold2)">You are invited to the</p>
+                <h2>Party</h2>
+                <p style="font-size:22px">🥂</p><br>
+                <p class="pf" style="color:#fff;font-size:20px">Thrusday, 03 December 2026</p>
+                <p>8:00 pm onwards · Dinner &amp; dance<br>A.V. Resort</p><br>
+            </div>
+        </section>
+
+        <section>
+            <p class="sm rv">Location</p>
+            <h2 class="rv">How to Reach</h2>
+            <div class="map rv" id="map" title="Open in Google Maps"><svg viewBox="0 0 300 190">
+                    <rect width="300" height="190" fill="#f3ebe0" />
+                    <ellipse cx="110" cy="70" rx="60" ry="26" fill="#cfe3e6" />
+                    <path d="M0 150Q80 120 140 140T300 90M60 0Q90 80 70 190M200 0Q190 70 230 190" stroke="#fff"
+                        stroke-width="9" fill="none" />
+                    <path class="route" d="M25 165Q90 120 150 135T240 60" stroke="#6e1f2f" stroke-width="2.5"
+                        fill="none" />
+                    <g class="pin">
+                        <path d="M240 62c-9-14-14-19-14-27a14 14 0 0128 0c0 8-5 13-14 27z" fill="#6e1f2f" />
+                        <circle cx="240" cy="36" r="5" fill="#fff" />
+                    </g>
+                </svg></div>
+
+            <h3 class="rv" style="font-size:20px">A.V. Resort</h3>
+            <p class="addr rv">Sadulshahar Road, Abhoria, Sri Ganganagar 335062</p>
+            <a class="btn f" href="https://maps.app.goo.gl/owEzJK1H1oNMDkrd7" target="_blank" rel="noopener">Get directions</a>
+        </section>
+
+        <section style="padding-bottom:90px">
+            <div class="med" style="margin:0 auto 14px">ॐ</div>
+            <h2 class="rv" style="font-size:26px">We can’t wait to celebrate with you</h2>
+            <p class="pf rv" style="font-weight:500;font-style:italic;line-height:1.7">With love,<br>the Kucheria &amp;
+                Ghodela families</p>
+        </section>
+    </main>
+    <div class="toast" id="toast"></div>
+
+    <script>
+        const $ = s => document.querySelector(s), T = t => { const e = $('#toast'); e.textContent = t; e.classList.add('on'); setTimeout(() => e.classList.remove('on'), 1800) };
+        const colors = ['#c4566b', '#f3b3be', '#e6c88a', '#fbd9de', '#8a2a3d'];
+        function petals(n, conf) { for (let i = 0; i < n; i++) { const p = document.createElement('i'); p.className = 'petal'; p.style.cssText = `left:${Math.random() * 100}vw;background:${colors[i % 5]};--dx:${(Math.random() - .5) * 160}px;animation-duration:${3 + Math.random() * 3}s;animation-delay:${Math.random() * (conf ? .6 : 2)}s;${conf ? 'width:7px;height:10px;border-radius:2px;top:30vh' : ''}`; document.body.appendChild(p); setTimeout(() => p.remove(), 7000) } }
+        // loader
+        Promise.all([document.fonts.ready, new Promise(r => setTimeout(r, 700))]).then(() => { const l = $('#loader'); l.style.opacity = 0; setTimeout(() => l.remove(), 600) });
+        // open book
+        let opened = 0; $('#book').onclick = () => { if (opened) return; opened = 1; const b = document.body; $('#book').classList.add('open'); setTimeout(() => { b.classList.add('zoom'); petals(26); b.classList.add('live') }, 1200); setTimeout(() => { b.classList.remove('lock'); $('#intro').remove(); typeNames() }, 2400); audio && audio.play().catch(() => { }) };
+        // music: sample uses YouTube link button (swap for MP3: set src below)
+        const audio = null, SONG = 'https://www.youtube.com/results?search_query=tum+hi+ho';
+        $('#mus').onclick = () => window.open(SONG, '_blank');
+        // typing
+        function typeInto(el, txt, d = 70) { return new Promise(r => { [...txt].forEach((c, i) => { const s = document.createElement('span'); s.textContent = c === ' ' ? '\u00a0' : c; s.style.animationDelay = i * d + 'ms'; el.appendChild(s) }); setTimeout(r, txt.length * d + 500) }) }
+        async function typeNames() { await typeInto($('#gn'), 'Manish'); $('#gp').style.opacity = 1; await new Promise(r => setTimeout(r, 500)); await typeInto($('#bn'), 'Reena'); $('#bp').style.opacity = 1 }
+        // reveals
+        const io = new IntersectionObserver(e => e.forEach(x => { if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target) } }), { threshold: .2 });
+        document.querySelectorAll('.rv').forEach(e => io.observe(e));
+        // parallax roses
+        addEventListener('scroll', () => { const y = scrollY; document.querySelectorAll('.rose').forEach(r => r.style.translate = `0 ${-y * r.dataset.p}px`) }, { passive: true });
+        // tassel
+        const paper = $('#paper'), tas = $('#tas'); let done = 0, sy = 0, dragging = 0;
+        function reveal() { if (done) return; done = 1; paper.classList.remove('drag'); paper.style.height = '254px'; $('#fing').remove(); $('#dtxt').textContent = 'See you on Friday, 12 February 2027'; petals(45, 1) }
+        tas.addEventListener('pointerdown', e => { if (done) return; dragging = 1; sy = e.clientY; paper.classList.add('drag'); tas.setPointerCapture(e.pointerId); $('#fing').style.display = 'none' });
+        tas.addEventListener('pointermove', e => { if (!dragging || done) return; const h = Math.max(0, Math.min(254, e.clientY - sy)); paper.style.height = h + 'px'; if (h > 180) { dragging = 0; reveal() } });
+        tas.addEventListener('pointerup', e => { if (done) return; dragging = 0; const h = parseInt(paper.style.height || 0); paper.classList.remove('drag'); if (h < 8) reveal(); else paper.style.height = '0px' });
+        // countdown + calendar
+        const target = new Date('2026-12-04T09:30:00+05:30');
+        setInterval(() => { let s = Math.max(0, (target - Date.now()) / 1000 | 0); const d = s / 86400 | 0, h = s % 86400 / 3600 | 0, m = s % 3600 / 60 | 0; $('#cd').textContent = `${d} days · ${h} hrs · ${m} min · ${s % 60} sec` }, 1000);
+        $('#cal').onclick = e => { e.preventDefault(); const ics = 'BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nSUMMARY:Manish & Reena Wedding\nDTSTART:20261204T093000Z\nDTEND:20261204T103000Z\nEND:VEVENT\nEND:VCALENDAR'; const a = document.createElement('a'); a.href = 'data:text/calendar;charset=utf-8,' + encodeURIComponent(ics); a.download = 'wedding.ics'; a.click() };
+        // carousel
+        function carousel(id, did, items, render) {
+            const el = $(id), dots = $(did), n = items.length; let i = 0, x0 = null;
+            items.forEach((it, k) => { const c = document.createElement('div'); c.className = 'card'; render(c, it); el.appendChild(c); dots.appendChild(document.createElement('b')) });
+            const cs = [...el.children], ds = [...dots.children];
+            function upd() { cs.forEach((c, k) => { let d = ((k - i + n + n / 2) % n) - n / 2; const a = Math.abs(d); c.style.transform = `translateX(${d * 60}%) translateZ(${-a * 120}px) rotateY(${-d * 28}deg) scale(${1 - a * .12})`; c.style.opacity = a > 1.5 ? 0 : 1 - a * .25; c.style.filter = a ? 'blur(2px)' : 'none'; c.style.zIndex = 9 - a | 0; c.style.pointerEvents = a > 1.5 ? 'none' : 'auto' }); ds.forEach((b, k) => b.className = k == i ? 'on' : '') }
+            el.addEventListener('pointerdown', e => x0 = e.clientX);
+            addEventListener('pointerup', e => { if (x0 == null) return; const dx = e.clientX - x0; x0 = null; if (Math.abs(dx) > 40) { i = (i + (dx < 0 ? 1 : -1) + n) % n; upd() } });
+            upd()
+        }
+        const fest = [['Baan', 'Monday · 30 Nov· 10:15 am', 'Home', 'Wear yellow', '#e3d2ae', '🪔', 'linear-gradient(#e9a15a,#d0452e)'],
+        ['Rati Joga', 'Wednesday · 02 Dec · 9:00 pm', 'Home', 'Traditional wear', '#e07a2f', '🏺', 'linear-gradient(#f4b183,#d8742e)'],
+        ['Party', 'Thursday · 03 Dec · 06:15 pm', 'Home', 'Traditional wear', '#e07a2f', '🏺', 'linear-gradient(#f4b183,#d8742e)'],
+        ['Baraat & Pheras', 'Friday · 12 Dec · 09:15 am', 'Home', 'Festive red & gold', '#a8203a', '🔥', 'linear-gradient(#5a1424,#c0343f)']];
+        carousel('#car1', '#d1', fest, (c, f) => { c.innerHTML = `<div class="sc" style="background:${f[6]}"></div><div class="ic">${f[5]}</div><h3>${f[0]}</h3><p><b>${f[1]}</b><br>${f[2]}</p><div class="dc"><u style="background:${f[4]}"></u><span>Dress code<br>${f[3]}</span></div>` });
+        const story = [['How we met', 'linear-gradient(160deg,#e8b4b8,#8c6a5d)'], ['First trip together', 'linear-gradient(160deg,#a8c8d8,#5f7f8c)'], ['The proposal', 'linear-gradient(160deg,#f3d18a,#c0733a)'], ['Our roka', 'linear-gradient(160deg,#d9a3c4,#7d3a6a)'], ['Forever begins', 'linear-gradient(160deg,#c99090,#6e1f2f)']];
+        carousel('#car2', '#d2', story, (c, s) => { c.style.padding = '0'; c.innerHTML = `<div class="photo" style="position:absolute;inset:0;background:${s[1]}"></div><div style="position:relative;padding:40px 14px 18px;background:linear-gradient(transparent,#0008);color:#fff;font:600 17px 'Playfair Display'">${s[0]}</div>` });
+        // map + copy
+        $('#map').onclick = () => window.open('https://maps.app.goo.gl/owEzJK1H1oNMDkrd7', '_blank');
+        $('#copy').onclick = () => { const t = 'A.V. Resort, Sadulshahar Road, Near Abhoria, Sri Ganganagar 335062'; (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(() => T('Address copied'), () => T('Copy not available')) };
+    </script>
+</body>
+
+</html>
